@@ -32,9 +32,23 @@ button.addEventListener("click", function() {
 
         hover.style.width = `${size}px`;
         hover.style.height = `${size}px`;
-
-        hover.addEventListener("mouseenter", function(e) {
-            e.target.style.backgroundColor = "white";
-        });
     })
+    // GET random color number from #000000 to #ffffff
+    const getRandomColor = () => '#' + Math.floor(Math.random() * 16777215).toString(16);
+    // For every mouse over of container all the hover divs change to random color
+    container.addEventListener('mouseover', function(event) {
+        hovers.forEach(hover => {
+            hover.style.backgroundColor = getRandomColor();
+        })
+    })
+    /* For changing only the target div color in the container,
+    the code will be as follows.
+        container.addEventListener('mouseover', function(event) {
+            event.target.style.backgroundColor = getRandomColor();
+        })
+        or 
+        hover.addEventListener('mouseenter', function() {
+            hover.style.backgroundColor = getRandomColor();
+        })
+    */
 })
