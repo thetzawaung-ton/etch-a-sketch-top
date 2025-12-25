@@ -13,24 +13,28 @@ button.addEventListener("click", function() {
     } else {
         gridPair = userInput;
     }
-    console.log(gridPair);
     // Clear the existing grid when a new input is entered
     while(container.firstChild) {
         container.firstChild.remove();
     }
     // Add the square of gridPair divs in the container
     for(let i = 1; i <= gridPair ** 2; i++) {
-    const newDiv = document.createElement("div");
-    newDiv.classList.add("hover")
-    container.appendChild(newDiv);
-}
+        const newDiv = document.createElement("div");
+        newDiv.classList.add("hover")
+        container.appendChild(newDiv);
+    }
 
-})
+    const hovers = document.querySelectorAll(".hover");
 
-const hovers = document.querySelectorAll(".hover");
+    hovers.forEach(hover => {
+        // -2 is for borders
+        const size = (container.clientWidth / gridPair) -2;
 
-hovers.forEach(hover => {
-    hover.addEventListener("mouseenter", function(e) {
-        e.target.style.backgroundColor = "white";
-    });
+        hover.style.width = `${size}px`;
+        hover.style.height = `${size}px`;
+
+        hover.addEventListener("mouseenter", function(e) {
+            e.target.style.backgroundColor = "white";
+        });
+    })
 })
