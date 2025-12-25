@@ -14,13 +14,18 @@ button.addEventListener("click", function() {
         gridPair = userInput;
     }
     console.log(gridPair);
-})
-
-for(let i = 1; i <= 256; i++) {
+    // Clear the existing grid when a new input is entered
+    while(container.firstChild) {
+        container.firstChild.remove();
+    }
+    // Add the square of gridPair divs in the container
+    for(let i = 1; i <= gridPair ** 2; i++) {
     const newDiv = document.createElement("div");
     newDiv.classList.add("hover")
     container.appendChild(newDiv);
 }
+
+})
 
 const hovers = document.querySelectorAll(".hover");
 
